@@ -37,14 +37,14 @@ public class OrderListUserTest {
         }
     }
 
-    @DisplayName("Провека получения списка заказов зарегистрированного пользователя")
+    @DisplayName("Checking the receipt of a list of orders of a registered user")
     @Test
     public void testGetOrderListForRegisteredUser() {
         ValidatableResponse response = orderClientSteps.getOrdersListUser(accessToken);
         orderCreateSteps.getOrderListInLoginUser(response);
     }
 
-    @DisplayName("Провека невозможности получения списка заказов незарегистрированным пользователем")
+    @DisplayName("Checking the impossibility of obtaining a list of orders by an unregistered user")
     @Test
     public void testUnableToGetOrderListForNonRegisteredUser() {
         ValidatableResponse response = orderClientSteps.getOrdersListUser("1");

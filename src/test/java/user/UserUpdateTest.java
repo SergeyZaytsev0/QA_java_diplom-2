@@ -32,7 +32,7 @@ public class UserUpdateTest {
     }
 
     @Test
-    @DisplayName("Проверка возможности изменения email зарегестрированным пользователем")
+    @DisplayName("Checking the possibility of changing email by a registered user")
     public void verifyUpdateRegisteredUserEmail() {
         uniqueUser.setEmail(uniqueUser.getEmail() + "1");
         ValidatableResponse response = userRequest.update(accessToken, uniqueUser);
@@ -40,7 +40,7 @@ public class UserUpdateTest {
     }
 
     @Test
-    @DisplayName("Проверка возможности изменения пароля зарегестрированным пользователем")
+    @DisplayName("Checking the possibility of changing the password by a registered user")
     public void verifyUpdateRegisteredUserPassword() {
         uniqueUser.setPassword(uniqueUser.getPassword() + "1");
         ValidatableResponse response = userRequest.update(accessToken, uniqueUser);
@@ -48,7 +48,7 @@ public class UserUpdateTest {
     }
 
     @Test
-    @DisplayName("Проверка возможности изменения пароля зарегестрированным пользователем")
+    @DisplayName("Checking the possibility of changing the password by a registered user")
     public void verifyUpdateRegisteredUserName() {
         uniqueUser.setName(uniqueUser.getName() + "1");
         ValidatableResponse response = userRequest.update(accessToken, uniqueUser);
@@ -56,7 +56,7 @@ public class UserUpdateTest {
     }
 
     @Test
-    @DisplayName("Проверка возможности изменения пароля незарегестрированным пользователем")
+    @DisplayName("Checking the possibility of changing the password by an unregistered user")
     public void verifyUpdateUnregisteredUserName() {
         uniqueUser.setName(uniqueUser.getName() + "1");
         ValidatableResponse response = userRequest.update("1", uniqueUser);
@@ -64,7 +64,7 @@ public class UserUpdateTest {
     }
 
     @Test
-    @DisplayName("Проверка возможности изменения пароля зарегестрированным пользователем")
+    @DisplayName("Checking the possibility of changing the password by a registered user")
     public void verifyUpdateUnregisteredUserPassword() {
         uniqueUser.setPassword(uniqueUser.getPassword() + "1");
         ValidatableResponse response = userRequest.update("1", uniqueUser);
@@ -72,7 +72,7 @@ public class UserUpdateTest {
     }
 
     @Test
-    @DisplayName("Проверка возможности изменения email зарегестрированным пользователем")
+    @DisplayName("Checking the possibility of changing email by a registered user")
     public void verifyUpdateUnregisteredUserEmail() {
         uniqueUser.setEmail(uniqueUser.getEmail() + "1");
         ValidatableResponse response = userRequest.update("1", uniqueUser);

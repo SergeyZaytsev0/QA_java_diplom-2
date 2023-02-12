@@ -33,7 +33,7 @@ public class UserLoginTest {
     }
 
     @Test
-    @DisplayName("Проверка успешного входа под существующими логином и паролем пользователя")
+    @DisplayName("Verification of successful login under the existing username and password of the user")
     public void verifySuccessfulUserLogin() {
         UserLoginDTO userLoginDTO = UserLoginDTO.from(uniqueUser);
         ValidatableResponse login = userRequest.login(userLoginDTO);
@@ -41,7 +41,7 @@ public class UserLoginTest {
     }
 
     @Test
-    @DisplayName("Проверка ошибки при входе с неверным email")
+    @DisplayName("Checking for an error when logging in with an invalid email")
     public void verifyLoginErrorWithIncorrectEmail() {
         UserLoginDTO userLoginDTO = UserLoginDTO.from(uniqueUser);
         userLoginDTO.setEmail(userLoginDTO.getEmail() + "1");
@@ -50,7 +50,7 @@ public class UserLoginTest {
     }
 
     @Test
-    @DisplayName("Проверка ошибки при входе с неверным паролем")
+    @DisplayName("Checking for an error when logging in with an incorrect password")
     public void verifyLoginErrorWithIncorrectPassword() {
         UserLoginDTO userLoginDTO = UserLoginDTO.from(uniqueUser);
         userLoginDTO.setPassword(userLoginDTO.getPassword() + "1");

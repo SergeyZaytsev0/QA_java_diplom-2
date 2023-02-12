@@ -9,7 +9,7 @@ import praktikum.stellarburgers.dto.UserLoginDTO;
 public class UserRequest extends Config {
 
 
-    @Step("Запрос на создание пользователя")
+    @Step("Request to create a user")
     public ValidatableResponse create(UserCreateDTO userCreateDTO) {
         return spec()
                 .body(userCreateDTO)
@@ -18,7 +18,7 @@ public class UserRequest extends Config {
                 .then().log().all();
     }
 
-    @Step("Запрос на удаление пользователя")
+    @Step("User delete request")
     public ValidatableResponse delete(String token) {
         return spec()
                 .header("Authorization", token)
@@ -27,7 +27,7 @@ public class UserRequest extends Config {
                 .then().log().all();
     }
 
-    @Step("Запрос на вход курьера")
+    @Step("Courier Entry Request")
     public ValidatableResponse login(UserLoginDTO userLoginDTO) {
         return spec()
                 .body(userLoginDTO)
@@ -36,7 +36,7 @@ public class UserRequest extends Config {
                 .then().log().all();
     }
 
-    @Step("Запрос на изменение данных пользователя")
+    @Step("Request to change user data")
     public ValidatableResponse update(String token, UserCreateDTO userCreateDTO) {
         return spec()
                 .header("Authorization", token)

@@ -39,7 +39,7 @@ public class OrderCreateTest {
         }
     }
 
-    @DisplayName("Проверка создания заказа зарегестрированным пользователем")
+    @DisplayName("Checking the creation of an order by a registered user")
     @Test
     public void verifyOrderCreationByRegisteredUser() {
         List<String> ingredients = List.of("61c0c5a71d1f82001bdaaa6d", "61c0c5a71d1f82001bdaaa6f");
@@ -48,7 +48,7 @@ public class OrderCreateTest {
         orderCreateSteps.createOrderSuccess(response);
     }
 
-    @DisplayName("Проверка создания заказа незарегестрированным пользователем")
+    @DisplayName("Checking the creation of an order by an unregistered user")
     @Test
     public void verifyOrderCreationByUnregisteredUser() {
         List<String> ingredients = List.of("61c0c5a71d1f82001bdaaa6d", "61c0c5a71d1f82001bdaaa6f");
@@ -57,7 +57,7 @@ public class OrderCreateTest {
         orderCreateSteps.createOrderSuccess(response);
     }
 
-    @DisplayName("Проверка получения ошибки при попытке создания заказа без ингредиентов")
+    @DisplayName("Checking for an error when trying to create an order without ingredients")
     @Test
     public void verifyOrderCreationErrorWithoutIngredients() {
         OrderCreateDTO orderCreateDTO = new OrderCreateDTO();
@@ -65,7 +65,7 @@ public class OrderCreateTest {
         orderCreateSteps.createOrderNoIngredients(response);
     }
 
-    @DisplayName("Проверка получения ошибки при попытке создания заказа c неверным хешами ингредиентов")
+    @DisplayName("Checking for an error when trying to create an order with invalid ingredient hashes")
     @Test
     public void verifyOrderCreationErrorWithInvalidIngredientHashes() {
         List<String> ingredients = List.of("61c0c5a71d1f820dff01bdaaa6d", "61c0c5a71d1f82dfsdf001bdaaa6f");

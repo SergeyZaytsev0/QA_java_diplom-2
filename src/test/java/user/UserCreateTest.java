@@ -26,14 +26,14 @@ public class UserCreateTest {
     }
 
     @Test
-    @DisplayName("Проверка успешного создания пользователя")
+    @DisplayName("Verifying successful user creation")
     public void verifySuccessfulUserCreation() {
         ValidatableResponse create = userRequest.create(uniqueUser);
         accessToken = userResponce.assertCreationSusses(create);
     }
 
     @Test
-    @DisplayName("Проверка невозможности создания дубля пользователя")
+    @DisplayName("Checking the impossibility of creating a double user")
     public void verifyFailedDuplicateUserCreation() {
         ValidatableResponse create = userRequest.create(uniqueUser);
         accessToken = userResponce.assertCreationSusses(create);
@@ -43,7 +43,7 @@ public class UserCreateTest {
     }
 
     @Test
-    @DisplayName("Проверка невозможности создания пользователя без e-mail")
+    @DisplayName("Checking the impossibility of creating a user without e-mail")
     public void verifyFailedUserCreationWithoutEmail() {
         uniqueUser.setEmail(null);
         ValidatableResponse create = userRequest.create(uniqueUser);
@@ -51,7 +51,7 @@ public class UserCreateTest {
     }
 
     @Test
-    @DisplayName("Проверка невозможности создания пользователя без пароля")
+    @DisplayName("Checking the impossibility of creating a user without a password")
     public void verifyFailedUserCreationWithoutPassword() {
         uniqueUser.setPassword(null);
         ValidatableResponse create = userRequest.create(uniqueUser);
@@ -59,7 +59,7 @@ public class UserCreateTest {
     }
 
     @Test
-    @DisplayName("Проверка невозможности создания пользователя без имени")
+    @DisplayName("Checking the impossibility of creating a user without a name")
     public void verifyFailedUserCreationWithoutName() {
         uniqueUser.setName(null);
         ValidatableResponse create = userRequest.create(uniqueUser);

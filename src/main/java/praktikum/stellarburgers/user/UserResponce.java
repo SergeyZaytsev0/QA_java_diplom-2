@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 
 public class UserResponce {
 
-    @Step("Успешный ответ на запрос по созданию пользователя.")
+    @Step("Successful response to the user creation request.")
     public String assertCreationSusses(ValidatableResponse response) {
         return response.assertThat()
                 .statusCode(200)
@@ -17,49 +17,49 @@ public class UserResponce {
                 .extract().path("accessToken");
     }
 
-    @Step("Успешный ответ ответа на запрос по удалению пользователя.")
+    @Step("Successfully responded to a request to delete a user.")
     public void assertDeleteSusses(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(202)
                 .body("message", equalTo("User successfully removed"));
     }
 
-    @Step("Ошибка по запросу на создание ранее зарегистрированного пользователя.")
+    @Step("Error on request to create a previously registered user.")
     public void assertCreationDoubleUserFailed(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(403)
                 .body("message", equalTo("User already exists"));
     }
 
-    @Step("Ошибка по запросу на созданию пользователя c незаполненным обязательным полем")
+    @Step("Error on the request to create a user with an empty required field")
     public void assertCreationUserNoRequiredField(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(403)
                 .body("message", equalTo("Email, password and name are required fields"));
     }
 
-    @Step("Успешный ответ на запрос входа")
+    @Step("Successful response to login request")
     public void loginInSusses(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(200)
                 .body("accessToken", notNullValue());
     }
 
-    @Step("Ошибка при указании неверного логина или пароля")
+    @Step("Error when specifying an incorrect username or password")
     public void loginInFailed(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(401)
                 .body("message", equalTo("email or password are incorrect"));
     }
 
-    @Step("Успешный ответ на запрос изменения данных зарегестрированным пользователем")
+    @Step("Successful response to a data change request by a registered user")
     public void updateDateUserInSusses(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(200)
                 .body("success", is(true));
     }
 
-    @Step("Успешный ответ на запрос изменения данных зарегестрированным пользователем")
+    @Step("Successful response to a data change request by a registered user")
     public void updateDateUserNotInFailed(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(401)
