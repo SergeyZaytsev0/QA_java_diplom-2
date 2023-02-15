@@ -7,21 +7,21 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class OrderCreateSteps {
-    @Step("Cоздания заказа")
+    @Step("Cоздание заказа")
     public void createOrderSuccess(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(200)
                 .body("success", is(true));
     }
 
-    @Step("Cоздания заказа без ингредиентов")
+    @Step("Cоздание заказа без ингредиентов")
     public void createOrderNoIngredients(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(400)
                 .body("message", equalTo("Ingredient ids must be provided"));
     }
 
-    @Step("Cоздания заказа с неверным хешем ингредиентов")
+    @Step("Cоздание заказа с неверным хешем ингредиентов")
     public void createOrderInvalidHashIngredients(ValidatableResponse response) {
         response.assertThat()
                 .statusCode(500);

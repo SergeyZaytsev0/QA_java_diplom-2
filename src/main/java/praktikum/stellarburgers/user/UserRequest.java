@@ -7,14 +7,17 @@ import praktikum.stellarburgers.dto.UserCreateDTO;
 import praktikum.stellarburgers.dto.UserLoginDTO;
 
 public class UserRequest extends Config {
-
+    private final String ROOT = "/auth";
+    private final String REGISTER = ROOT + "/register";
+    private final String USER = ROOT + "/user";
+    private final String LOGIN = ROOT + "/login";
 
     @Step("Request to create a user")
     public ValidatableResponse create(UserCreateDTO userCreateDTO) {
         return spec()
                 .body(userCreateDTO)
                 .when()
-                .post("/auth/register")
+                .post(REGISTER)
                 .then().log().all();
     }
 
@@ -23,7 +26,7 @@ public class UserRequest extends Config {
         return spec()
                 .header("Authorization", token)
                 .when()
-                .delete("/auth/user")
+                .delete(USER)
                 .then().log().all();
     }
 
@@ -32,7 +35,7 @@ public class UserRequest extends Config {
         return spec()
                 .body(userLoginDTO)
                 .when()
-                .post("/auth/login")
+                .post(LOGIN)
                 .then().log().all();
     }
 
@@ -42,7 +45,7 @@ public class UserRequest extends Config {
                 .header("Authorization", token)
                 .body(userCreateDTO)
                 .when()
-                .patch("/auth/user")
+                .patch(USER)
                 .then().log().all();
     }
 }

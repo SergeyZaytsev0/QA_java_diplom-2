@@ -11,31 +11,30 @@ import praktikum.stellarburgers.order.OrderClientSteps;
 import praktikum.stellarburgers.order.OrderCreateSteps;
 import praktikum.stellarburgers.user.UserGenerator;
 import praktikum.stellarburgers.user.UserRequest;
-import praktikum.stellarburgers.user.UserResponce;
+import praktikum.stellarburgers.user.UserResponse;
 
 import java.util.List;
 
 public class OrderCreateTest {
     private final UserGenerator userGenerator = new UserGenerator();
     private final UserRequest userRequest = new UserRequest();
-    private final UserResponce userResponce = new UserResponce();
+    private final UserResponse userResponse = new UserResponse();
     private final OrderClientSteps orderClientSteps = new OrderClientSteps();
-    UserCreateDTO uniqueUser = userGenerator.randomDataCourier();
-    OrderCreateSteps orderCreateSteps = new OrderCreateSteps();
+    private final UserCreateDTO uniqueUser = userGenerator.randomDataCourier();
+    private final OrderCreateSteps orderCreateSteps = new OrderCreateSteps();
     private String accessToken;
-
 
     @Before
     public void setUpUser() {
         ValidatableResponse create = userRequest.create(uniqueUser);
-        accessToken = userResponce.assertCreationSusses(create);
+        accessToken = userResponse.assertCreationSusses(create);
     }
 
     @After
     public void cleanUpUser() {
         if (accessToken != null) {
             ValidatableResponse response = userRequest.delete(accessToken);
-            userResponce.assertDeleteSusses(response);
+            userResponse.assertDeleteSusses(response);
         }
     }
 
@@ -73,5 +72,4 @@ public class OrderCreateTest {
         ValidatableResponse response = orderClientSteps.createOrders(accessToken, orderCreateDTO);
         orderCreateSteps.createOrderInvalidHashIngredients(response);
     }
-
 }
